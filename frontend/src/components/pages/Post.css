@@ -8,6 +8,23 @@
     animation: slideRightAnimation 1.5s ease, fadeInAnimation 3s ease;
 }
 
+.post > #title {
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.post > #subtitle {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.post > #content {
+    padding-top:0;
+    margin-top: 0;
+}
+
 .button-50 {
     float: right;
 }

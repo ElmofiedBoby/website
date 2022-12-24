@@ -16,6 +16,50 @@ function Projects() {
         }, null);
     }
 
+    function dataToTd(data) {
+        return [React.createElement('td', null, data[0]), React.createElement('td', null, data[1])];
+    }
+
+    function generateTable(data) {
+        let arr = [];
+        let rows = [];
+        for(let i = 0; i < data.length; i++) {
+            if(i-1 % 2 === 0) {
+                arr.push(data[i]);
+                rows.push(React.createElement('tr', null, dataToTd(arr)));
+            }
+            else {
+                arr = [];
+                arr.push(data[i]);
+                if(i === data.length-1) {
+                    rows.push(React.createElement('tr', null, React.createElement('td', null, data[i])));
+                }
+            }
+        }
+        return React.createElement('table', null, rows);
+    }
+    /*
+    <table>
+                    {postdata.map(function (val) {
+                        console.log(val);
+                        console.log(this.acc);
+                        console.log(this.array);
+                        if(this.acc-1 % 2 === 0) {
+                            this.array.push(val)
+                            return <><tr><td>{this.array[0]}</td><td>{this.array[1]}</td></tr></>
+                        }
+                        else {
+                            //this.array = [];
+                            this.array.push(val)
+                            if(this.acc === postdata.length) {
+                                return <><tr><td>{this.array[0]}</td></tr></>
+                            }
+                        }
+                        this.acc += 1;
+                    }, {acc:0, array: []})}
+                </table>
+    */
+
     if(!window.data) {
         return (
             <><motion.div exit={{ opacity: 0 }}>
@@ -24,11 +68,13 @@ function Projects() {
         )
     }
     else {
+        let postdata = window.data.map(insertData);
+        let tableRows = generateTable(postdata);
         return (
             <><motion.div exit={{ opacity: 0 }}>
             <div>
                 {React.createElement('div', {id: 'projects'}, React.createElement('h1', {id: 'projects-header'}, 'Projects'))}
-                {window.data.map(insertData)}
+                {tableRows}
             </div></motion.div>
             </>
         );

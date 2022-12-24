@@ -8,3 +8,8 @@
   align-items: center;
   justify-content: center;
 }
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
