@@ -12,7 +12,17 @@ header * {
 }  
 
 header {  
-    margin: 10px;  
+    margin: 10px;
+    animation: slideDownAnimation 3s ease;
+}
+
+@keyframes slideDownAnimation {
+    0% {
+        transform: translateY(-200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 header strong {  

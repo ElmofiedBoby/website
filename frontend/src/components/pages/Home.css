@@ -1,15 +1,51 @@
 #name {
     font-family: 'Berkshire Swash', cursive;
     font-size: 72px;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 #homepage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
 }
 
 #home-list {
     list-style-type: none;
+}
+
+#list {
+    animation: fadeInAnimation ease 3s, slideRightAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideRightAnimation {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+   }
+}
+
+@keyframes slideLeftAnimation {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(0);
+   }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
 }
