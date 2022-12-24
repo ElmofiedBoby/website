@@ -1,0 +1,14 @@
+#projects-header {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 50px;
+}
+
+#projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+}

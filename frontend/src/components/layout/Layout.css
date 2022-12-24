@@ -1,0 +1,28 @@
+header {  
+    position: fixed;  
+    left: 0;  
+    right: 0;  
+    top: 10px;  
+    height: 30px;  
+    display: flex;  
+    align-items: center;
+}  
+header * {  
+    display: inline;  
+}  
+
+header {  
+    margin: 10px;  
+}
+
+header strong {  
+    color: rgb(126, 57, 0);  
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;  
+}
+
+#content {
+    margin-top: 50px;
+    text-shadow: 10 10 5;
+    font-family: 'Itim', cursive;
+}

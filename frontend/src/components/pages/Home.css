@@ -1,0 +1,15 @@
+#name {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 72px;
+}
+
+#homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+}
+
+#home-list {
+    list-style-type: none;
+}
