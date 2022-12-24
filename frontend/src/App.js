@@ -30,7 +30,7 @@ const useFetch = url => {
 function App() {
   window.api = "http://localhost:3001/";
   window.data = useFetch(window.api+'posts/');
-  window.loggedIn = true;
+  window.loggedIn = false;
 
   return (
     <AnimatePresence exitBeforeEnter>
