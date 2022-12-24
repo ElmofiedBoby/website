@@ -6,10 +6,10 @@ function Post(props) {
     return (
         <>
             <div class="post">
-                <h1>{props.title}</h1>
-                <h2>{props.subtitle}</h2>
-                <h3>{props.date}</h3>
-                <p>{props.content}</p>
+                <h1 id="title">{props.title}</h1>
+                <h2 id="subtitle">{props.subtitle}</h2>
+                <h3 id="date">{props.date}</h3>
+                <p id="content">{props.content}</p>
                 <footer>
                     {React.createElement(Link, {to: "/edit?postid="+props.postid}, 'Edit')}
                 </footer>

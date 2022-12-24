@@ -5,8 +5,30 @@
     margin-right: 30px;
     margin-bottom: 30px;
     box-shadow: 5px 5px 5px black;
+    animation: slideRightAnimation 1.5s ease, fadeInAnimation 3s ease;
 }
 
 .button-50 {
     float: right;
+}
+
+@keyframes slideRightAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+    70% {
+        transform: translateX(2%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
