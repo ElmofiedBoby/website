@@ -2,6 +2,7 @@ import React from 'react'
 import {useLocation, Navigate} from "react-router-dom";
 import './Edit.css'
 import Post from './Post'
+import { motion } from "framer-motion"
 
 function Edit() {
     let postid = new URLSearchParams(useLocation().search).get('postid');
@@ -38,7 +39,7 @@ function Edit() {
 
         if(postid === 'create') {
             return (
-                <>  
+                <>  <motion.div exit={{ opacity: 0 }}>
                     <div class="edit-post">
                     <h2>Create a new Post</h2>
                         <form {...edit_attr}>
@@ -53,14 +54,14 @@ function Edit() {
                             <input value="Save Changes" type="submit"></input><br></br>
                         </form>
                     </div>
-                </>
+                    </motion.div></>
             );
         }
         else {
             let delete_attr = {action: window.api+'delete', method: 'POST'};
 
             return (
-                <>
+                <><motion.div exit={{ opacity: 0 }}>
                     {insertData(post)}
                     <div class="edit-post">
                     <h2>Edit a Post</h2>
@@ -80,7 +81,7 @@ function Edit() {
                                 {React.createElement('input', {name: "postid", type: "hidden", value: postid}, null)}
                                 <input type="submit" value="Delete Post"/><br/>
                             </form>
-                    </div>
+                    </div></motion.div>
                 </>
             );
         }

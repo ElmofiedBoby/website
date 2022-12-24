@@ -10,6 +10,7 @@ import Layout from './components/layout/Layout'
 import NotFound from './components/errors/NotFound'
 import Edit from './components/pages/Edit'
 import { useState , useEffect } from 'react';
+import { AnimatePresence } from "framer-motion";
 
 import './App.css';
 
@@ -32,18 +33,20 @@ function App() {
   window.loggedIn = true;
 
   return (
-    <div>
-    <Router>
-      <Routes>
-        <Route path ="/" element={<Layout />}>
-          <Route index element={<Home />}></Route>
-          <Route path="projects" element={<Projects />}></Route>
-          <Route path="edit" element={<Edit />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Route>
-      </Routes>
-    </Router>  
-  </div>
+    <AnimatePresence exitBeforeEnter>
+      <div>
+        <Router>
+          <Routes>
+            <Route path ="/" element={<Layout />}>
+              <Route index element={<Home />}></Route>
+              <Route path="projects" element={<Projects />}></Route>
+              <Route path="edit" element={<Edit />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Route>
+          </Routes>
+        </Router>  
+      </div>
+    </AnimatePresence>
   );
 }
 

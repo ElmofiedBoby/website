@@ -1,10 +1,11 @@
 import React from 'react'
 import './Post.css'
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
 
 function Post(props) {
     return (
-        <>
+        <><motion.div exit={{ opacity: 0 }}>
             <div class="post">
                 <h1 id="title">{props.title}</h1>
                 <h2 id="subtitle">{props.subtitle}</h2>
@@ -13,7 +14,7 @@ function Post(props) {
                 <footer>
                     {React.createElement(Link, {to: "/edit?postid="+props.postid}, 'Edit')}
                 </footer>
-            </div>
+            </div></motion.div>
         </>
     );
 }

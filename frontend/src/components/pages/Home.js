@@ -1,9 +1,10 @@
 import React from 'react';
 import './Home.css';
+import { motion } from "framer-motion"
 
 const Home = () => {
     return (
-        <>
+        <><motion.div exit={{ opacity: 0 }}>
         <div id="homepage">
             <h1 id="name">Nithin Joseph</h1>
             <div id="list">
@@ -14,7 +15,7 @@ const Home = () => {
                 </ul>
             </div>
         </div>
-        </>
+        </motion.div></>
     );
 }
 
