@@ -1,20 +1,21 @@
 header {  
-    position: fixed;  
-    left: 0;  
-    right: 0;  
     top: 10px;  
-    height: 30px;  
     display: flex;  
     align-items: center;
-}  
+    margin: 0px auto;
+    text-align: center;
+    animation: slideDownAnimation 3s ease;
+}
+
+nav {
+    top: 10px;
+    width: 100%;
+    position: fixed;
+}
+
 header * {  
     display: inline;  
 }  
-
-header {  
-    margin: 10px;
-    animation: slideDownAnimation 3s ease;
-}
 
 @keyframes slideDownAnimation {
     0% {
