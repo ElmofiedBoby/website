@@ -54,7 +54,7 @@ app.get("/posts", (request, response) => {
         }
         else {
             console.log("Request received!");
-            let ans = await blog.find().toArray().catch(error);
+            let ans = await blog.find().sort({date: -1}).toArray().catch(error);
             console.log(ans);
             response.json(ans);
         }
@@ -113,7 +113,6 @@ app.post("/edit", (request, response) => {
                         $set: {
                             title: request.body.title,
                             subtitle: request.body.subtitle,
-                            date: request.body.date,
                             content: request.body.contents
                         }
                 }).then(success,error);
@@ -122,7 +121,7 @@ app.post("/edit", (request, response) => {
                 await blog.insertOne({
                     title: request.body.title,
                     subtitle: request.body.subtitle,
-                    date: request.body.date,
+                    date: new Date(),
                     content: request.body.contents
                 }).then(success,error);
             }

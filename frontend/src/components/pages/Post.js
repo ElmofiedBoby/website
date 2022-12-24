@@ -9,10 +9,9 @@ function Post(props) {
             <div class="post">
                 <h1 id="title">{props.title}</h1>
                 <h2 id="subtitle">{props.subtitle}</h2>
-                <h3 id="date">{props.date}</h3>
                 <p id="content">{props.content}</p>
                 <footer>
-                    {React.createElement(Link, {to: "/edit?postid="+props.postid}, 'Edit')}
+                    View | {React.createElement(Link, {to: "/edit?postid="+props.postid}, 'Edit')} | {props.date}
                 </footer>
             </div></motion.div>
         </>

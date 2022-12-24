@@ -45,7 +45,7 @@ function Edit() {
                         <form {...edit_attr}>
                             <label>Title</label><br></br><input name="title" id="title" type="text"></input><br></br>
                             <label>Subtitle</label><br></br><input name="subtitle" id="subtitle" type="text"></input><br></br>
-                            <label>Date</label><br></br><input name="date" id="date" type="date"></input><br></br>
+                            <label>Date</label><br></br><input name="date" id="date" type="date" disabled></input><br></br>
                             <label>Content</label><br></br><textarea cols="40" rows="10" name="contents" id="contents"/><br></br><br></br>
                             
                             {React.createElement('input', {name: "type", type: "hidden", value: "create"}, null)}
@@ -68,7 +68,7 @@ function Edit() {
                             <form {...edit_attr}>
                                 <label>Title</label><br/><input name="title" id="title" type="text" {...getValue(post.title)}/><br/>
                                 <label>Subtitle</label><br></br><input name="subtitle" id="subtitle" type="text" {...getValue(post.subtitle)}/><br/>
-                                <label>Date</label><br></br><input name="date" id="date" type="date" {...getValue(post.date)}/><br/>
+                                <label>Date</label><br></br><input name="date" id="date" type="date" {...getValue(post.date)} disabled/><br/>
                                 <label>Content</label><br></br><textarea cols="40" rows="10" name="contents" id="contents" {...getValue(post.content)}/><br/><br/>
                                 
                                 {React.createElement('input', {name: "type", type: "hidden", value: "edit"}, null)}
