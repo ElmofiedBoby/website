@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 function Edit() {
     let postid = new URLSearchParams(useLocation().search).get('postid');
 
-    if(window.loggedIn === true) {
+    if(window.localStorage.getItem("loggedIn") === true) {
         let edit_attr = {action: window.api+'edit', method: 'POST'};
         let post = {};
         for(let i = 0; i < window.data.length; i++) {
@@ -87,8 +87,7 @@ function Edit() {
         }
     }
     else {
-        alert("You are not logged in!");
-        return <Navigate to="/"/>;
+        return <Navigate to="/login"/>;
     }
 }
 

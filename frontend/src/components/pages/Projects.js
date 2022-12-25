@@ -60,7 +60,7 @@ function Projects() {
                 </table>
     */
 
-    if(!window.data) {
+    if(!window.localStorage.getItem("data")) {
         return (
             <><motion.div exit={{ opacity: 0 }}>
                 {React.createElement('div', {id: 'projects'}, React.createElement('h1', {id: 'projects-header'}, 'Projects'))}
@@ -68,13 +68,11 @@ function Projects() {
         )
     }
     else {
-        let postdata = window.data.map(insertData);
-        let tableRows = generateTable(postdata);
         return (
             <><motion.div exit={{ opacity: 0 }}>
             <div>
                 {React.createElement('div', {id: 'projects'}, React.createElement('h1', {id: 'projects-header'}, 'Projects'))}
-                {tableRows}
+                {generateTable(JSON.parse(window.localStorage.getItem("data")).map(insertData))}
             </div></motion.div>
             </>
         );

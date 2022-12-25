@@ -37,25 +37,58 @@ app.use(function (req, res, next) {
 
 
 /* End Points */
+var tokens = [];
+app.post("/login", (request,response) => {
+    const rand = () => {
+        return Math.random().toString(36).substr(2);
+    };
+    const token = () => {
+        console.log("INFO: Token generated");
+        return rand() + rand();
+    };
+    const generatedToken = token();
+
+    console.log("INFO: "+request.body.username + ' | ' + request.body.password);
+    if(request.body.username === "nithjoe1" && request.body.password === "poggy") {
+        console.log("INFO: Token Validated");
+        tokens.push(generatedToken);
+    }
+    return response.redirect(frontend+"login?token="+generatedToken);
+});
+
+app.get("/login", (request,response) => {
+    let isFound = false;
+    for(let i = 0; i < tokens.length; i++) {
+        if(request.query.token === tokens[i]) {
+            console.log("INFO: Token Matched");
+            isFound = true;
+            break;
+        }
+    }
+
+    return response.json({
+        "loggedIn": isFound
+    });
+});
 
 app.get("/posts", (request, response) => {
     function success(val) {
         console.log('Resolved: ', val);
     }
     function error(err) {
-        console.log('Error: ', err);
+        console.log('ERROR: ', err);
         response.json(err);
     }
 
     client.connect(async err => {
         if(err) {
             response.status(400).send("Error connecting to DB!");
-            console.log("Error connecting to DB!")
+            console.log("ERROR: DB connection");
         }
         else {
-            console.log("Request received!");
+            console.log("GET: Posts");
             let ans = await blog.find().sort({date: -1}).toArray().catch(error);
-            console.log(ans);
+            //console.log(ans);
             response.json(ans);
         }
         await client.close();
@@ -67,21 +100,21 @@ app.get("/posts/:postId", (request, response) => {
         console.log('Resolved: ', val);
     }
     function error(err) {
-        console.log('Error: ', err);
+        console.log('ERROR: ', err);
         response.json(err);
     }
 
     client.connect(async err => {
         if(err) {
             response.status(400).send("Error connecting to DB!");
-            console.log("Error connecting to DB!")
+            console.log("ERROR: DB connection");
         }
         else {
-            console.log("Request received!");
+            console.log("GET: Post("+postId+")");
             let ans = await blog.findOne({
                 _id: ObjectId(request.params.postId)
             }).then(success,error);
-            console.log(ans);
+            //console.log(ans);
             response.json(ans);
         }
         await client.close();
@@ -94,14 +127,14 @@ app.post("/edit", (request, response) => {
         response.redirect(frontend+'projects');
     }
     function error(err) {
-        console.log('Error: ', err);
+        console.log('ERROR: ', err);
         response.json(err);
     }
 
     client.connect(async err => {
         if(err) {
             response.status(400).send("Error connecting to DB!");
-            console.log("Error connecting to DB!")
+            console.log("ERROR: DB connection");
         }
         else {
             if(request.body.type == 'edit') {
@@ -137,14 +170,14 @@ app.post("/delete", (request,response) => {
         response.redirect(frontend+'projects');
     }
     function error(err) {
-        console.log('Error: ', err);
+        console.log('ERROR: ', err);
         response.json(err);
     }
 
     client.connect(async err => {
         if(err) {
             response.status(400).send("Error connecting to DB!");
-            console.log("Error connecting to DB!")
+            console.log("ERROR: DB connection");
         }
         else {
             await blog.deleteOne({_id: ObjectId(request.body.postid)})

@@ -9,6 +9,7 @@ import Projects from './components/pages/Projects'
 import Layout from './components/layout/Layout'
 import NotFound from './components/errors/NotFound'
 import Edit from './components/pages/Edit'
+import Login from './components/pages/Login'
 import { AnimatePresence } from "framer-motion";
 
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
               <Route index element={<Home />}></Route>
               <Route path="projects" element={<Projects />}></Route>
               <Route path="edit" element={<Edit />}></Route>
+              <Route path="login" element={<Login />}></Route>
               <Route path="*" element={<NotFound />}></Route>
             </Route>
           </Routes>
