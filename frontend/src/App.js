@@ -9,28 +9,11 @@ import Projects from './components/pages/Projects'
 import Layout from './components/layout/Layout'
 import NotFound from './components/errors/NotFound'
 import Edit from './components/pages/Edit'
-import { useState , useEffect } from 'react';
 import { AnimatePresence } from "framer-motion";
 
 import './App.css';
 
-const useFetch = url => {
-  const [data, setData] = useState(null);
-
-  async function fetchData() {
-      const response = await fetch(url);
-      setData(await response.json());
-  }
-
-  useEffect(() => {fetchData()},[]);
-
-  return data;
-}
-
 function App() {
-  window.api = "http://localhost:3001/";
-  window.data = useFetch(window.api+'posts/');
-  window.loggedIn = false;
 
   return (
     <AnimatePresence exitBeforeEnter>
