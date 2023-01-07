@@ -1,6 +1,9 @@
 FROM node:latest
 WORKDIR /app
 
+# Environment Variables
+ENV BACKEND_PORT=3001
+
 # Setup Environment
 COPY public /app/public
 COPY package.json /app
