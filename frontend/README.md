@@ -1,3 +1,6 @@
+ # Dockerfile command
+ docker run -p 3000:3000 -v $(pwd)/src:/app/src website-frontend
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

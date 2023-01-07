@@ -10,14 +10,14 @@ const client = new MongoClient(`mongodb+srv://${process.env.USER}:${process.env.
     { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 const blog = client.db(process.env.DB).collection(process.env.COL);
 const app = express();
-const frontend = 'http://localhost:3000/';
+const frontend = 'http://localhost:'+process.env.FRONTEND_PORT+'/';
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', frontend);
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
